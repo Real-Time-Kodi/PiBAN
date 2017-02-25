@@ -50,6 +50,7 @@ There is an optional STATUS LED that can be connected to GPIO pin 17 that will t
  * The scripts are currently limited to any block device that enumerates as /dev/sd[x]
  * Multiple drives can be plugged in and erased simultaneously, however, this will cause the STATUS LED to become inaccurate.
  * The PI cannot supply much current to the attached USB devices. Higher current draw devices may reset the pi or prevent it from starting.
+ * The PI is slow. Expect this to take a while.
  
 ### Todo
  * Supply a pre-made SD card image.
