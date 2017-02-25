@@ -44,7 +44,7 @@ cd Pi-Eraser
 ### Hardware
 This has been tested on a Raspberry Pi A and a Raspberry Pi Zero. It should work on any raspberry pi however.
 
-There is an optional STATUS LED that can be connected to GPIO pin 18 that will turn on while the PI is erasing a drive.
+There is an optional STATUS LED that can be connected to GPIO pin 17 that will turn on while the PI is erasing a drive.
 
 ### Limitations
  * The scripts are currently limited to any block device that enumerates as /dev/sd[x]
