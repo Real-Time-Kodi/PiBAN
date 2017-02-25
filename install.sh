@@ -1,5 +1,4 @@
-sudo -i
-apt update
-apt install at shred wiringpi
-touch /var/log/PiEraser.log
-./update.sh
+sudo apt update
+sudo apt install at secure-erase wiringpi
+sudo touch /var/log/PiEraser.log
+sudo ./update.sh
