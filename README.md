@@ -33,6 +33,9 @@ chmod +x *.sh
 ./install.sh
 ```
 
+### Use
+Booot your pi with any USB storage plugged in. The STATUS LED will light to indicate that the process is running. When the light is out, a pass has been completed and the drive can be unplugged. If more than one pass is required, you may edit the file nuke.sh and mess with the parameters passed to the shed command. When done, run ````sudo ./update.sh````
+
 ### Uninstallation
 Run the uninstallation script.
 
