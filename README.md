@@ -50,7 +50,6 @@ There is an optional STATUS LED that can be connected to GPIO pin 18 that will t
  * The scripts are currently limited to any block device that enumerates as /dev/sd[x]
  * Multiple drives can be plugged in and erased simultaneously, however, this will cause the STATUS LED to become inaccurate.
  * The PI cannot supply much current to the attached USB devices. Higher current draw devices may reset the pi or prevent it from starting.
- * Only devices that were not present during the boot-up will be erased. This is because the device insertion events are what triggers the scripts.
  
 ### Todo
  * Supply a pre-made SD card image.
