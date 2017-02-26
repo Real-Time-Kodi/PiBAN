@@ -1,8 +1,9 @@
 # Pi-Eraser
-Automatic Raspberry-pi based secure hard drive eraser. This will erase any block device plugged into the USB bus using the shred command.
+Automatic Raspberry-pi based secure hard drive eraser. This will erase any block device plugged into the USB bus using the shred command. It will then create a partition table and a single FAT32 partition to make the drive immediately usable. This behaviour is easily changed.
 
 # WARNING:
-This will wipe any block device hooked to the Pi's USB without asking confirmation. Use with extreme caution.
+ * This will wipe any block device hooked to the Pi's USB without asking confirmation. Use with extreme caution.
+ * This software could potentially leave data in reallocated blocks. This is especially a problem on flash media.
 
 
 ### Scripts
@@ -34,8 +35,17 @@ chmod +x *.sh
 ```
 
 ### Use
-Booot your pi with any USB storage plugged in. The STATUS LED will light to indicate that the process is running. When the light is out, a pass has been completed and the drive can be unplugged. If more than one pass is required, you may edit the file nuke.sh and mess with the parameters passed to the shed command. When done, run ````sudo ./update.sh````
+Booot your pi with any USB storage plugged in. The STATUS LED will light to indicate that the process is running. When the light is out, a pass has been completed and the drive can be unplugged. If more than one pass is required, you may edit the file nuke.sh and mess with the parameters passed to the shred command. When done, run ````sudo ./update.sh````
 
+#### Customization
+The file nuke.sh is the file that actully does all of the work on the drive itself. It has several examples of how to handle various tasks including:
+ * Changing the filesystem of the newly formatted device.
+ * Automatically copying files to the newly formatted device.
+ * Using a disk image instead of formatting the drive.
+ * Disabling the secure wipe entirely and just using this software to automatically image drives.
+ 
+Remember to run ```sudo ./update.sh```` after editing nuke.sh
+ 
 ### Uninstallation
 Run the uninstallation script.
 
@@ -56,5 +66,6 @@ There is an optional STATUS LED that can be connected to GPIO pin 17 that will t
  * The PI is slow. Expect this to take a while.
  
 ### Todo
- * Supply a pre-made SD card image.
+ * Add support to a single-board computer with a SATA port like orange-pi.
+ * Support ATA secure erase.
  * Lock SD card writes to prevent SD card corruption when the PI is unplugged.
