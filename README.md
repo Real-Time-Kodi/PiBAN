@@ -1,4 +1,4 @@
-# Pi-Eraser
+# PiBAN
 Automatic Raspberry-pi based secure hard drive eraser. This will erase any block device plugged into the USB bus using the shred command. It will then create a partition table and a single FAT32 partition to make the drive immediately usable. This behaviour is easily changed.
 
 # WARNING:
@@ -28,8 +28,8 @@ Start with a clean Raspbian lite install, clone into the repository and run the 
 ```
 sudo apt update
 sudo apt install git
-git clone https://github.com/Real-Time-Kodi/Pi-Eraser
-cd Pi-Eraser
+git clone https://github.com/Real-Time-Kodi/PiBAN
+cd PiBAN
 chmod +x *.sh
 ./install.sh
 ```
@@ -50,7 +50,7 @@ Remember to run ```sudo ./update.sh```` after editing nuke.sh
 Run the uninstallation script.
 
 ```
-cd Pi-Eraser
+cd PiBAN
 ./uninstall.sh
 ```
 

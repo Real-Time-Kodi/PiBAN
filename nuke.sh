@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "NUKING $1" >> /var/log/PiEraser.log
+echo "NUKING $1" >> /var/log/PiBAN.log
 #TURN ON LED
 gpio -g mode 17 out
 gpio -g write 17 1
@@ -7,9 +7,9 @@ gpio -g write 17 1
 # This next line handles securely erasing the disk.
 # Pick one. Or none if you don't need secure erase.
 # 1 Pass. (Fastest)
-#shred --iterations=1 "$1"
+shred --iterations=1 "$1"
 # This will run a DOD Short erase(3 passes)(Slow)
-nwipe --autonuke --nogui --nowait "$1"
+#nwipe --autonuke --nogui --nowait "$1"
 # DOD 5220.22-M (7 Passes)(Just use a hammer instead)
 #nwipe --autonuke --nogui --nowait --method=dod "$1"
 
@@ -49,9 +49,9 @@ cd $mntpath
 
 # Now we have a couple of options of what to do. By default we'll create a text file
 # to inform the user that the script worked.
-touch Erased_With_Pi-Eraser.txt
-echo -e "This drive has been securely erased and repartitioned with Pi-Eraser\n\
-https://github.com/Real-Time-Kodi/Pi-Eraser" > Erased_With_Pi-Eraser.txt
+touch Erased_With_PiBAN.txt
+echo -e "This drive has been securely erased and repartitioned with PiBAN\n\
+https://github.com/Real-Time-Kodi/PiBAN" > Erased_With_PiBAN.txt
 
 # We could also take this oppurtunity to call another script:
 #/path/to/script
@@ -67,5 +67,5 @@ sync #SYNC because I don't trust the kernel to do it for me.
 #TURN OFF LED
 gpio -g write 17 0
 
-echo "Done" >> /var/log/PiEraser.log
+echo "Done" >> /var/log/PiBAN.log
 
