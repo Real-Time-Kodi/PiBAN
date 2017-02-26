@@ -1,5 +1,5 @@
 # Pi-Eraser
-Automatic Raspberry-pi based secure hard drive eraser.
+Automatic Raspberry-pi based secure hard drive eraser. This will erase any block device plugged into the USB bus using the shred command.
 
 # WARNING:
 This will wipe any block device hooked to the Pi's USB without asking confirmation. Use with extreme caution.
@@ -22,7 +22,7 @@ uninstall.sh - removes scripts to disable functionality.
 
 
 ### Installation
-Start with a clean debian install, clone into the repository and run the install script.
+Start with a clean Raspbian lite install, clone into the repository and run the install script.
 
 ```
 sudo apt update
