@@ -5,8 +5,13 @@ gpio -g mode 17 out
 gpio -g write 17 1
 
 # This next line handles securely erasing the disk.
-# We can comment it out if we don't need secure erasure.
-shred --iterations=1 "$1" >> /var/log/PiEraser.log
+# Pick one. Or none if you don't need secure erase.
+# 1 Pass. (Fastest)
+#shred --iterations=1 "$1"
+# This will run a DOD Short erase(3 passes)(Slow)
+nwipe --autonuke --nogui --nowait "$1"
+# DOD 5220.22-M (7 Passes)(Just use a hammer instead)
+#nwipe --autonuke --nogui --nowait --method=dod "$1"
 
 # Now that We're erased, we can do whatever we want with our new drive.
 # There are a couple of options here, but by default, we'll just create a new
