@@ -45,7 +45,7 @@ cd $mntpath
 # Now we have a couple of options of what to do. By default we'll create a text file
 # to inform the user that the script worked.
 touch Erased_With_Pi-Eraser.txt
-echo "This drive has been securely erased and repartitioned with Pi-Eraser\
+echo -e "This drive has been securely erased and repartitioned with Pi-Eraser\n\
 https://github.com/Real-Time-Kodi/Pi-Eraser" > Erased_With_Pi-Eraser.txt
 
 # We could also take this oppurtunity to call another script:
