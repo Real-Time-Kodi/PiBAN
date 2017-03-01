@@ -7,6 +7,6 @@ then
     echo "${DEVPATH}" >> /var/log/PiBAN.log
     echo "${SUBSYSTEM}" >> /var/log/PiBAN.log
     echo "${SYMLINK}" >> /var/log/PiBAN.log
-    echo "/usr/local/bin/nuke.sh $1" | batch
+    echo "/usr/local/bin/nuke.sh $1" & disown
 fi
 
