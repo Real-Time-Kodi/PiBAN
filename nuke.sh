@@ -1,4 +1,11 @@
 #!/bin/bash
+devname=$(basename $1)
+#Redirrect Logging
+exec 1<&-
+exec 2<&-
+exec 1<>/tmp/$devname.log
+exec 2>&1
+
 echo "NUKING $1" >> /var/log/PiBAN.log
 #TURN ON LED
 gpio -g mode 17 out
@@ -52,6 +59,8 @@ cd $mntpath
 touch Erased_With_PiBAN.txt
 echo -e "This drive has been securely erased and repartitioned with PiBAN\n\
 https://github.com/Real-Time-Kodi/PiBAN" > Erased_With_PiBAN.txt
+#Let's also copy our log file to the device.
+cp /tmp/$devname.log .
 
 # We could also take this oppurtunity to call another script:
 #/path/to/script
