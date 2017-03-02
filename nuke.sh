@@ -1,10 +1,5 @@
 #!/bin/bash
 devname=$(basename $1)
-#Redirrect Logging
-exec 1<&-
-exec 2<&-
-exec 1<>/tmp/$devname.log
-exec 2>&1
 
 echo "NUKING $1" >> /var/log/PiBAN.log
 #TURN ON LED
