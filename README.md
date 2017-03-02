@@ -36,6 +36,18 @@ chmod +x *.sh
 ./install.sh
 ```
 
+##### Hardening the Pi for Reliability.
+
+In the ideal use-case, this software is installed on a Raspberry Pi with no power button/keyboard/monitor.
+This makes it impossible to properly shut down the pi. Pulling the power, especially during filesystem-writes, can corrupt the Pi's filesystem.
+Beyond that, Raspbian uses a swap file by default, which can wear out the card prematurely.
+
+To midigate these problems, we can set up Raspbian to use a read only filesystem.
+This project provides a script to do this. This script is likely to break with newer versions of Raspbian so use it with caution. It was devoped for Raspbian Jessie lite.
+
+To harden the Pi against SD card failure, you can run the following command from within the git directory. ````sudo ./harden.sh````
+Keep in mind that this process is somewhat **irreversible** and that there is no script provided to undo it.
+
 ### Use
 Booot your pi with any USB storage plugged in. The STATUS LED will light to indicate that the process is running. When the light is out, a pass has been completed and the drive can be unplugged. If more than one pass is required, you may edit the file nuke.sh and mess with the parameters passed to the shred command. When done, run ````sudo ./update.sh````
 
@@ -72,4 +84,3 @@ There is an optional STATUS LED that can be connected to GPIO pin 17 that will t
 ### Todo
  * Add support to a single-board computer with a SATA port like orange-pi.
  * Support ATA secure erase.
- * Lock SD card writes to prevent SD card corruption when the PI is unplugged.
