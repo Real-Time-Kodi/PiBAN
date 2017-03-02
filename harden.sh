@@ -20,6 +20,7 @@ mv /etc/fstab /etc/fstab.bak
 sed -e 's/\/dev\/\S*\s*\/boot\s*vfat\s*\S*/&,ro/' /etc/fstab.bak | sed -e 's/\/dev\/\S*\s*\/\s*ext4\s*\S*/&,ro/' > /etc/fstab
 echo "tmpfs	/var/log	tmpfs   nodev,nosuid	0	0
 tmpfs	/var/tmp	tmpfs	nodev,nosuid	0	0
+tmpfs	/mnt	tmpfs	nodev,nosuid	0	0
 tmpfs   /tmp        tmpfs   nodev,nosuid    0   0" >> /etc/fstab
 
 # This makes SSH usable on a read only fs.
