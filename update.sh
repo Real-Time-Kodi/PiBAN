@@ -1,6 +1,6 @@
-rm /usr/local/bin/nuke.sh
-rm /usr/local/bin/usbmount.sh
-rm /etc/udev/rules.d/usbmount.rules
+rm /usr/local/bin/nuke.sh &>/dev/null
+rm /usr/local/bin/usbmount.sh &>/dev/null
+rm /etc/udev/rules.d/usbmount.rules &>/dev/null
 
 cp nuke.sh /usr/local/bin/nuke.sh
 cp usbmount.sh /usr/local/bin/usbmount.sh
