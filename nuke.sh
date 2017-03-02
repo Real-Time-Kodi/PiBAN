@@ -67,5 +67,5 @@ sync #SYNC because I don't trust the kernel to do it for me.
 #TURN OFF LED
 gpio -g write 17 0
 
-echo "Done" >> /var/log/PiBAN.log
+echo "Drive Completed $1" >> /var/log/PiBAN.log
 

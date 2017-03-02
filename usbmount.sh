@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
-echo "${ACTION}" >> /var/log/PiBAN.log
-
+echo "Detected new device: $1" >/var/log/PiBAN.log
 if [ "${ACTION}" = "add" ]
 then
-    echo "$1" >> /var/log/PiBAN.log
-    echo "${DEVPATH}" >> /var/log/PiBAN.log
-    echo "${SUBSYSTEM}" >> /var/log/PiBAN.log
-    echo "${SYMLINK}" >> /var/log/PiBAN.log
     /usr/local/bin/nuke.sh $1 & disown
 fi
 
