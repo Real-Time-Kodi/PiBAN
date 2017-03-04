@@ -1,4 +1,10 @@
 #!/bin/bash
+# This file will use hdparm to determine if a drive can be secure-erased and 
+# run the secure-erase. It takes the drive's device node as an argument and
+# returns:
+# 0: OK
+# 1: Drive should be erased manually
+# 2: ERROR(Drive is locked)
 erase_mode="--security-erase"
 
 sec=$(hdparm -I $1 | pcregrep -M "^Security:.*(\n\t.*)*")
