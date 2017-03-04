@@ -1,7 +1,7 @@
 #!/bin/bash
 erase_mode="--security-erase"
 
-hdparm -I $1 | pcregrep -M "^Security:.*(\n\t.*)*" > tmp.txt
+sec=$(hdparm -I $1 | pcregrep -M "^Security:.*(\n\t.*)*")
 
 if [ $? -eq 0 ]
 then
@@ -10,18 +10,17 @@ else
 	echo "Security not supported."
 	exit 1
 fi
+echo "$sec"
 
-grep -q -P "^\tnot\tlocked" tmp.txt
+echo "$sec" | grep -q -P "^\tnot\tlocked"
 if [ $? -eq 0 ]
 then
 	echo "Not Locked"
 else
-	grep -q -P "^\t\tlocked" tmp.txt
-	echo "LOCKED!! $?"
+	echo "$sec" | grep -q -P "^\t\tlocked"
 	if [ $? -eq 0 ]
 	then
 # TODO: attempt to unlock with password "password"
-
 		echo "Actually Locked"
 		exit 2
 	else
@@ -30,14 +29,12 @@ else
 	fi
 fi
 
-grep -q "enhanced erase" tmp.txt
+echo "$sec" | grep -q "enhanced erase"
 if [ $? -eq 0 ]
 then
 	echo "Enhanced Security Erase Supported"
 	erase_mode="--security-erase-enhanced"
 fi
-
-rm tmp.txt
 
 echo "HDPARM COMMANDS COMMENTED OUT"
 #hdparm --user-master u --security-set-pass "password" "$1"
