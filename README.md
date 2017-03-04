@@ -1,7 +1,22 @@
 # PiBAN
-Automatic Raspberry-pi based secure hard drive eraser. This will erase any block device plugged into the USB bus using the shred command. It will then create a partition table and a single FAT32 partition to make the drive immediately usable. This is somewhat similar to creating that runs DBaN with the /autonuke option enabled.
+Automatic Raspberry-pi based secure hard drive eraser. This will erase any 
+block device plugged into the USB bus using the shred command. It will then 
+create a partition table and a single FAT32 partition to make the drive 
+immediately usable. This is somewhat similar to creating that runs DBaN with 
+the /autonuke option enabled.
 
-The name is based on Derik's Boot and Nuke(DBaN). The software itself is a series of scripts that turn a standard Raspberry Pi into a standalone hard drive eraser. The erasing itself is handled by nwipe which is a fork of dwipe that is included in the debian repository.
+The name is based on Derik's Boot and Nuke(DBaN). The software itself is a 
+series of scripts that turn a standard Raspberry Pi into a standalone hard 
+drive eraser. The erasing itself is handled by nwipe which is a fork of dwipe 
+that is included in the debian repository.
+
+# Secure Erase Warning
+This is the **SECURE ERASE** branch which makes use of the ATA secure erase 
+routines built into hard drives. Since the raspberry pi is USB only, it is 
+necessary to use a USB to SATA adapter to accomplish this. This configuration
+is not supported by the kernel developers and has the possibility of **bricking
+your hard drive permenantly** if your usb>sata adapter doesn't properly support
+this.
 
 # WARNING:
  * This will wipe any block device hooked to the Pi's USB without asking confirmation. Use with extreme caution.
