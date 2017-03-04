@@ -2,6 +2,7 @@
 erase_mode="--security-erase"
 
 hdparm -I $1 | pcregrep -M "^Security:.*(\n\t.*)*" > tmp.txt
+
 if [ $? -eq 0 ]
 then
 	echo "Security Supported"
@@ -17,7 +18,16 @@ then
 else
 	grep -q -P "^\t\tlocked" tmp.txt
 	echo "LOCKED!! $?"
+	if [ $? -eq 0 ]
+	then
 # TODO: attempt to unlock with password "password"
+
+		echo "Actually Locked"
+		exit 2
+	else
+		echo "Weird Drive"
+		exit 1
+	fi
 fi
 
 grep -q "enhanced erase" tmp.txt
@@ -33,4 +43,4 @@ echo "HDPARM COMMANDS COMMENTED OUT"
 #hdparm --user-master u --security-set-pass "password" "$1"
 #hdparm --user-master u $erase_mode "password" "$1"
 
-exit 0
+exit $?
