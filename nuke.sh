@@ -9,7 +9,7 @@ gpio -g write 17 1
 # This next line handles securely erasing the disk.
 # Pick one. Or none if you don't need secure erase.
 # 1 Pass. (Fastest)
-shred -v --iterations=1 "$1"
+#shred -v --iterations=1 "$1"
 # This will run a DOD Short erase(3 passes)(Slow)
 #nwipe --autonuke --nogui --nowait "$1"
 # DOD 5220.22-M (7 Passes)(Just use a hammer instead)
