@@ -57,7 +57,7 @@ Beyond that, Raspbian uses a swap file by default, which can wear out the card p
 To midigate these problems, we can set up Raspbian to use a read only filesystem.
 This project provides a script to do this. This script is likely to break with newer versions of Raspbian so use it with caution. It was devoped for Raspbian Jessie lite.
 
-To harden the Pi against SD card failure, you can run the following command from within the git directory. ````sudo ./harden.sh````
+To harden the Pi against SD card failure, you can run the following command from within the git directory. ```sudo ./harden.sh```
 Keep in mind that this process is somewhat **irreversible** and that there is no script provided to undo it.
 
 ### Use
@@ -70,8 +70,10 @@ The file nuke.sh is the file that actully does all of the work on the drive itse
  * Using a disk image instead of formatting the drive.
  * Changing the method used by dwipe to securely erase drives.
  * Disabling the secure wipe entirely and just using this software to automatically image drives.
- 
-Remember to run ```sudo ./update.sh```` after editing nuke.sh
+
+If you're using a premade image, or you've run harden.sh, make sure to remount the root filesystem as rw before trying to change anything. ```sudo mount -o remount,rw /```
+
+Remember to run ```sudo ./update.sh``` after editing nuke.sh
  
 ### Uninstallation
 Run the uninstallation script.
