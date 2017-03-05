@@ -4,6 +4,8 @@ devname=$(basename $1)
 logname=/tmp/$devname.log
 if [ "${ACTION}" = "add" ]
 then
-    /usr/local/bin/hack.sh $1 $logname & disown
+{
+    echo "/usr/local/bin/nuke.sh $1 &> $logname" | at now
+} &
 fi
 
