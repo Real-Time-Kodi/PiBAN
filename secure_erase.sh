@@ -42,7 +42,6 @@ then
 	erase_mode="--security-erase-enhanced"
 fi
 
-#echo "HDPARM COMMANDS COMMENTED OUT"
 hdparm --user-master u --security-set-pass "password" "$1"
 hdparm --user-master u $erase_mode "password" "$1"
 

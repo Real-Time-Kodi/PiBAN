@@ -21,7 +21,7 @@ gpio -g write 17 1
 if [ $ENABLE_ATA_SECURE_ERASE -eq 1 ]
 then
 	log "Attemting ATA secure erase."
-	./secure_erase.sh $1
+	/usr/local/bin/secure_erase.sh $1
 	res=$?
 else
 	#This could use some work.
