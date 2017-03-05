@@ -6,8 +6,6 @@ export logprefix="[$devname]: "
 source /boot/PiBAN.txt
 ERASE_COMMAND=$(eval echo "$ERASE_COMMAND")
 
-log "$ERASE_COMMAND"
-
 log()
 {
   echo $logprefix$1 >> /var/log/PiBAN.log
