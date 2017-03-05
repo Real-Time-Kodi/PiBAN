@@ -26,8 +26,9 @@ else
 	echo "$sec" | grep -q -P "^\t\tlocked"
 	if [ $? -eq 0 ]
 	then
-# TODO: attempt to unlock with password "password"
 		echo "Actually Locked"
+		#Todo Check if we're unlocked and try again
+		sudo hdparm --security-disable "password" /dev/sdb
 		exit 2
 	else
 		echo "Weird Drive"
