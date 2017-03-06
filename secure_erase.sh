@@ -28,7 +28,7 @@ else
 	then
 		echo "Actually Locked"
 		#Todo Check if we're unlocked and try again
-		sudo hdparm --security-disable "password" /dev/sdb
+		sudo hdparm --security-disable "password" $1
 		exit 2
 	else
 		echo "Weird Drive"
@@ -43,7 +43,9 @@ then
 	erase_mode="--security-erase-enhanced"
 fi
 
+#Lock the drive(To enable security)
 hdparm --user-master u --security-set-pass "password" "$1"
+#Run our secure-erase
 hdparm --user-master u $erase_mode "password" "$1"
 
 exit $?
