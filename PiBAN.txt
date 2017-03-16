@@ -32,7 +32,7 @@ export ERASE_COMMAND="shred -v --iterations=1 $1"
 # That it's been successfully nuked. Leave one uncommented.
 
 # Create a filesystem and partition table?
-export CREATE_FILESYSTEM=0
+export CREATE_FILESYSTEM=1
 # Filesystem type? N/I
 export FILESYSTEM_TYPE=vfat
 #export FILESYSTEM_TYPE=ext2
@@ -40,7 +40,7 @@ export FILESYSTEM_TYPE=vfat
 #export FILESYSTEM_TYPE=ntfs
 
 #Do we want to copy the log file to the new partition?
-export COPY_LOGS=0
+export COPY_LOGS=1
 
 # Do we want to run a script? Note: If CREATE_FILESYSTEM is on, this script will
 # be run in the root of the newly formatted drive. It will be passed the drive's
@@ -59,4 +59,4 @@ export COPY_LOGS=0
 
 
 # This runs through piban, but without actually altering drives.
-export DRY_RUN=0
+export DRY_RUN=1
