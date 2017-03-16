@@ -18,7 +18,7 @@ log "NUKING $1"
 gpio -g mode 17 out
 gpio -g write 17 1
 
-if [ $ENABLE_ATA_SECURE_ERASE -eq 1 ]
+if (( $ENABLE_ATA_SECURE_ERASE ))
 then
 	log "Attemting ATA secure erase."
 	/usr/local/bin/secure_erase.sh $1
@@ -35,7 +35,12 @@ fi
 if [ $res -eq 1 ]
 then
 	log "ATA Secure erase not supported/enabled. Using fallback."
-	$ERASE_COMMAND
+	if (( $DRY_RUN ))
+	then
+		log "DRY RUN, NO ERASE HAPPENING."
+	else
+		$ERASE_COMMAND
+	fi
 fi
 if [ $res -eq 2 ]
 then

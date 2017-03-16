@@ -56,3 +56,7 @@ export COPY_LOGS=0
 # Do we want to apply an image to the drive?
 # (Will only run if CREATE_FILESYSTEM is 0)N/I
 #export DD=/path/to/image
+
+
+# This runs through piban, but without actually altering drives.
+export DRY_RUN=0

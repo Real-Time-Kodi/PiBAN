@@ -26,8 +26,7 @@ else
 fi
 echo "$sec"
 
-echo "$sec" | grep -q -P "^\t\tenabled"
-if [ $? -eq 0 ]
+if (echo "$sec" | grep -q -P "^\t\tenabled")
 then
 	echo "Security enabled. Attempting to disable."
 	if hdparm --user-master u --security-disable "password" $drive
@@ -42,13 +41,11 @@ then
 fi
 
 
-echo "$sec" | grep -q -P "^\tnot\tlocked"
-if [ $? -eq 0 ]
+if (echo "$sec" | grep -q -P "^\tnot\tlocked")
 then
-	echo "Not Locked"
+	echo "Drive is Not Locked"
 else
-	echo "$sec" | grep -q -P "^\t\tlocked"
-	if [ $? -eq 0 ]
+	if(echo "$sec" | grep -q -P "^\t\tlocked")
 	then
 		echo "Weird drive(locked but security disabled)"
 		#Half-assed attempt to unlock the drive. If we're at this line
@@ -69,26 +66,33 @@ else
 	fi
 fi
 
-echo "$sec" | grep -q "enhanced erase"
-if [ $? -eq 0 ]
+if (echo "$sec" | grep -q "enhanced erase")
 then
 	echo "Enhanced Security Erase Supported"
-	if [ $USE_ENHANCED_ERASE -eq 1 ]
+	if (( $USE_ENHANCED_ERASE ))
 	then
 		erase_mode="--security-erase-enhanced"
-		echo "Enhanced Erase is enabled and supported."
+		echo "Enhanced Security Erase will be used. See PiBAN.txt"
 	else
 		echo "Enhanced Erased supported but not enabled. See PiBAN.txt"
 	fi
 fi
 
 
-#Enable security
-hdparm --user-master u --security-set-pass "password" $drive
-#Run our secure-erase
-hdparm --user-master u $erase_mode "password" $drive
-ret=$?
-#Disable security Just-in-case
-hdparm --user-master u --security-disable "password" $drive
+if (( $DRY_RUN ))
+then
+	ret=0
+	echo "DRY RUN OF SECURE_ERASE COMPLETED"
+else
+# Enable security
+	hdparm --user-master u --security-set-pass "password" $drive
+# Run our secure-erase
+	hdparm --user-master u $erase_mode "password" $drive
+	ret=$?
+# Disable security Just-in-case.
+# We really don't care what happens here as long as the command runs. No need
+# for logging
+	hdparm --user-master u --security-disable "password" $drive &> /dev/null
+fi
 
 exit $ret
