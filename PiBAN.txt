@@ -46,11 +46,11 @@ export COPY_LOGS=1
 # be run in the root of the newly formatted drive. It will be passed the drive's
 # device node as a parameter.
 # It will output to /tmp/[drivenode].log, if COPY_LOGS is on, it will be invoked after the script.
-# N/I
+# You can call "log (string)" to write to the piban log.
 #export RUN_SCRIPT=/boot/script.sh
 
 # Do we want to copy the contents of a folder to the drive?
-# (Depends on CREATE_FILESYSTEM) N/I
+# (Depends on CREATE_FILESYSTEM)
 #export COPY_FILES=/boot/files/*
 
 # Do we want to apply an image to the drive?

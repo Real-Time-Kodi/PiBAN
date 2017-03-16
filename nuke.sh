@@ -76,7 +76,19 @@ w
 	cd $mntpath
 
 # Check if we should run a script and run it here
+	if [[ -n $RUN_SCRIPT ]]
+	then
+		log "Running scipt: $RUN_SCRIPT"
+		$RUN_SCRIPT $1
+	fi
+
 # Check if we should copy files and do that here
+	if [[ -n $COPY_FILES ]]
+	then
+		log "Copying Files from $COPY_FILES"
+		cp -r $COPY_FILES .
+	fi
+
 	if (( $COPY_LOGS ))
 	then
 		log "Copying LOGS"
