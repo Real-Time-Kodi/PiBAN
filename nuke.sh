@@ -49,7 +49,7 @@ then
 	return 2
 fi
 
-if (( $CREATE_FILESYSTEM ))
+if [[ $CREATE_FILESYSTEM -eq 1 ]] && [[ $DRY_RUN -eq 0 ]]
 then
 # The following ugly mess creates a new partition table with one partition
 # that takes up the whole disk.
