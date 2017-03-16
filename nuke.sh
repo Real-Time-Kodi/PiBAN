@@ -61,7 +61,7 @@ w
 # Make our filesystem
 # Check what FS we should use
 	log "Creating filesystem: FAT32"
-	mkfs.vfat -F 32 "$1"1
+	mkfs.vfat -v -F 32 "$1"1
 # Mount our new filesystem
 	log "Mounting filesystem"
 	mntpath=/mnt/$(basename "$1")1

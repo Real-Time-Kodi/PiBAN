@@ -73,7 +73,13 @@ echo "$sec" | grep -q "enhanced erase"
 if [ $? -eq 0 ]
 then
 	echo "Enhanced Security Erase Supported"
-	erase_mode="--security-erase-enhanced"
+	if [ $USE_ENHANCED_ERASE -eq 1 ]
+	then
+		erase_mode="--security-erase-enhanced"
+		echo "Enhanced Erase is enabled and supported."
+	else
+		echo "Enhanced Erased supported but not enabled. See PiBAN.txt"
+	fi
 fi
 
 
@@ -81,5 +87,8 @@ fi
 hdparm --user-master u --security-set-pass "password" $drive
 #Run our secure-erase
 hdparm --user-master u $erase_mode "password" $drive
+ret=$?
+#Disable security Just-in-case
+hdparm --user-master u --security-disable "password" $drive
 
-exit $?
+exit $ret

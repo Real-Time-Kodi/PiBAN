@@ -11,6 +11,9 @@
 # it on anything mission critical.
 export ENABLE_ATA_SECURE_ERASE=0
 
+# This will use ATA Enhanced security erase if available.
+export USE_ENHANCED_ERASE=1
+
 # This is the command that PiBAN will run if ATA SECURE ERASE is disabled, or
 # on drives that do not support ATA SECURE ERASE. Uncomment the one you wish to
 # use. Comment all of them out if you don't need this feature(such as if you
@@ -29,7 +32,7 @@ export ERASE_COMMAND="shred -v --iterations=1 $1"
 # That it's been successfully nuked. Leave one uncommented.
 
 # Create a filesystem and partition table?
-export CREATE_FILESYSTEM=1
+export CREATE_FILESYSTEM=0
 # Filesystem type? N/I
 export FILESYSTEM_TYPE=vfat
 #export FILESYSTEM_TYPE=ext2
@@ -37,17 +40,19 @@ export FILESYSTEM_TYPE=vfat
 #export FILESYSTEM_TYPE=ntfs
 
 #Do we want to copy the log file to the new partition?
-export COPY_LOGS=1
+export COPY_LOGS=0
 
-#Do we want to run a script? Note: If CREATE_FILESYSTEM is on, this script will
-#be run in the root of the newly formatted drive. It will be passed the drive's
-#device node as a parameter. N/I
+# Do we want to run a script? Note: If CREATE_FILESYSTEM is on, this script will
+# be run in the root of the newly formatted drive. It will be passed the drive's
+# device node as a parameter.
+# It will output to /tmp/[drivenode].log, if COPY_LOGS is on, it will be invoked after the script.
+# N/I
 #export RUN_SCRIPT=/boot/script.sh
 
-#Do we want to copy the contents of a folder to the drive?
-#(Depends on CREATE_FILESYSTEM) N/I
+# Do we want to copy the contents of a folder to the drive?
+# (Depends on CREATE_FILESYSTEM) N/I
 #export COPY_FILES=/boot/files/*
 
-#Do we want to apply an image to the drive?
+# Do we want to apply an image to the drive?
 # (Will only run if CREATE_FILESYSTEM is 0)N/I
 #export DD=/path/to/image
