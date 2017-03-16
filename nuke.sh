@@ -104,8 +104,19 @@ https://github.com/Real-Time-Kodi/PiBAN" > Erased_With_PiBAN.txt
 	cd /
 	umount $mntpath
 	rm -r $mntpath
-#else
-# check for DD and run DD if enabled
+else
+	cd /
+	if [[ -n $DD ]]
+	then
+		log "Copying Image to $1"
+		dd if=$DD of=$1 bs=1M
+		log "DD Exited with status: $?"
+	fi
+	if [[ -n $RUN_SCRIPT ]]
+        then
+                log "Running scipt: $RUN_SCRIPT"
+                $RUN_SCRIPT $1
+        fi
 fi
 
 
