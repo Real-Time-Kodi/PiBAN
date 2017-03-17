@@ -9,7 +9,7 @@
 # with a compatible dock. In general, any dock supporting UASP should be fine
 # but be sure to test this feature on a drive you don't care about before using
 # it on anything mission critical.
-export ENABLE_ATA_SECURE_ERASE=0
+export ENABLE_ATA_SECURE_ERASE=1
 
 # This will use ATA Enhanced security erase if available.
 export USE_ENHANCED_ERASE=1
@@ -59,4 +59,4 @@ export COPY_LOGS=1
 
 
 # This runs through piban, but without actually altering drives.
-export DRY_RUN=1
+export DRY_RUN=0

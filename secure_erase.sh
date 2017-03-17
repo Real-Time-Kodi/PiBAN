@@ -87,6 +87,7 @@ else
 # Enable security
 	hdparm --user-master u --security-set-pass "password" $drive
 # Run our secure-erase
+	sleep 1
 	hdparm --user-master u $erase_mode "password" $drive
 	ret=$?
 # Disable security Just-in-case.
