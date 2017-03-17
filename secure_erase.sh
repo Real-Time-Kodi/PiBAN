@@ -72,9 +72,9 @@ then
 	if (( $USE_ENHANCED_ERASE ))
 	then
 		erase_mode="--security-erase-enhanced"
-		echo "Enhanced Security Erase will be used. See PiBAN.txt"
+		echo "Enhanced Security Erase will be used. See PiBAN.conf"
 	else
-		echo "Enhanced Erased supported but not enabled. See PiBAN.txt"
+		echo "Enhanced Erased supported but not enabled. See PiBAN.conf"
 	fi
 fi
 

@@ -3,7 +3,7 @@ export foo="BAR"
 export devname=$(basename $1)
 export logprefix="[$devname]: "
 #Load our settings file
-source /boot/PiBAN.txt
+source /boot/PiBAN/PiBAN.conf
 ERASE_COMMAND=$(eval echo "$ERASE_COMMAND")
 
 log()
