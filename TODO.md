@@ -8,3 +8,5 @@ drives/enclosures support and select nuking method automatically based on this.
  - [ ] Check that whitelist against the actual drive in question
  - [x] Create a config file on /boot for easy reconfiguration without special tools.
  - [ ] Kill shred if drive removed.
+ - [ ] Convert to systemD service.
+ - [ ] Remove CRON dependancy
