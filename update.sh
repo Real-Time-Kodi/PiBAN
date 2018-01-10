@@ -1,11 +1,17 @@
-rm /usr/local/bin/nuke.sh &>/dev/null
-rm /usr/local/bin/usbmount.sh &>/dev/null
+rm -r /opt/PiBAN &>/dev/null
+rm /opt/PiBAN/nuke.sh &>/dev/null
+rm /opt/PiBAN/piban.sh &>/dev/null
 rm /etc/udev/rules.d/usbmount.rules &>/dev/null
+rm /etc/systemd/system/piban@.service &>/dev/null
 
-cp nuke.sh /usr/local/bin/nuke.sh
-cp usbmount.sh /usr/local/bin/usbmount.sh
+mkdir /opt/PiBAN &>/dev/null
+
+cp piban@.service /etc/systemd/system/
+cp nuke.sh /opt/PiBAN/nuke.sh
+cp piban.sh /opt/PiBAN/piban.sh
 cp usbmount.rules /etc/udev/rules.d/usbmount.rules
 
-udevadm control --reload-rules
+chmod +x /opt/PiBAN/nuke.sh /opt/PiBAN/piban.sh
 
-chmod +x /usr/local/bin/nuke.sh /usr/local/bin/usbmount.sh
+udevadm control --reload-rules
+udevadm control --reload-rules

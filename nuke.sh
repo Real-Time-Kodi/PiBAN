@@ -1,4 +1,6 @@
 #!/bin/bash
+# Usage: nuke.sh [device]
+# where [device] is the full path to the device to erase. Ex. /dev/sda
 devname=$(basename $1)
 
 echo "NUKING $1" >> /var/log/PiBAN.log
@@ -45,6 +47,7 @@ mkfs.vfat -F 32 "$1"1
 # Mount our new fs to a folder with the same name as the device(to prevent confilicts with
 # other instances of this script).
 mntpath=/mnt/$(basename "$1")1
+rm -rf $mntpath
 mkdir $mntpath
 mount "$1"1 $mntpath
 cd $mntpath
@@ -64,7 +67,7 @@ cp /tmp/$devname.log .
 
 cd /
 umount $mntpath
-rmdir $mntpath
+rm -rf $mntpath
 
 sync #SYNC because I don't trust the kernel to do it for me.
 
