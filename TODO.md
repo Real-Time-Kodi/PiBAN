@@ -9,4 +9,4 @@ drives/enclosures support and select nuking method automatically based on this.
  - [x] Create a config file on /boot for easy reconfiguration without special tools.
  - [x] Kill shred if drive removed.
  - [x] Convert to systemD service.
- - [ ] Remove CRON dependancy
+ - [x] Remove CRON dependancy
