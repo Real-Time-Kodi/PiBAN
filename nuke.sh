@@ -1,11 +1,7 @@
 #!/bin/bash
-<<<<<<< HEAD
 # Usage: nuke.sh [device]
 # where [device] is the full path to the device to erase. Ex. /dev/sda
-devname=$(basename $1)
 
-echo "NUKING $1" >> /var/log/PiBAN.log
-=======
 export foo="BAR"
 export devname=$(basename $1)
 export logprefix="[$devname]: "
@@ -21,7 +17,7 @@ log()
 export -f log #Make logging function available
 
 log "NUKING $1"
->>>>>>> origin/testing
+
 #TURN ON LED
 gpio -g mode 17 out
 gpio -g write 17 1
