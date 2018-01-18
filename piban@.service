@@ -1,0 +1,8 @@
+[Unit]
+Description=PiBAN autonuke service.
+BindsTo=dev-%i.device
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/PiBAN
+ExecStart=/opt/PiBAN/piban.sh %I

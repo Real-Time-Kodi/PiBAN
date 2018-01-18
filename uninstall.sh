@@ -1,7 +1,8 @@
-sudo rm /usr/local/bin/nuke.sh
-sudo rm /usr/local/bin/usbmount.sh
+sudo apt -y remove secure-delete wiringpi
+
+sudo rm -rf /opt/PiBAN
+sudo rm /etc/systemd/system/piban@.service
+
 sudo rm /etc/udev/rules.d/usbmount.rules
-sudo rm /usr/local/bin/secure_erase.sh
 sudo rm /boot/PiBAN/PiBAN.conf
-sudo rm /usr/local/bin/hack.sh
 sudo udevadm control --reload-rules

@@ -48,6 +48,18 @@ or
 
 
 ### Installation
+
+#### The Easy Way
+Grab an image from the [releases](https://github.com/Real-Time-Kodi/PiBAN/releases) page and use your favorite sd card writing software to burn it to an sd card.
+
+This image will be hardened for read only use and has ssh enabled. *Do not hook this to the internet without changing the default ssh password.*
+
+```
+sudo mount -o remount,rw /
+passwd
+```
+
+#### Through Github
 Start with a clean Raspbian lite install, clone into the repository and run the install script.
 
 ```

@@ -1,5 +1,7 @@
 #!/bin/bash
-export foo="BAR"
+# Usage: nuke.sh [device]
+# where [device] is the full path to the device to erase. Ex. /dev/sda
+
 export devname=$(basename $1)
 export logprefix="[$devname]: "
 #Load our settings file
@@ -14,6 +16,7 @@ log()
 export -f log #Make logging function available
 
 log "NUKING $1"
+
 #TURN ON LED
 gpio -g mode 17 out
 gpio -g write 17 1
@@ -21,7 +24,7 @@ gpio -g write 17 1
 if (( $ENABLE_ATA_SECURE_ERASE ))
 then
 	log "Attemting ATA secure erase."
-	/usr/local/bin/secure_erase.sh $1
+	/opt/PiBAN/secure_erase.sh $1
 	res=$?
 else
 	#This could use some work.

@@ -1,17 +1,19 @@
-rm /usr/local/bin/nuke.sh &>/dev/null
-rm /usr/local/bin/secure_erase.sh &>/dev/null
-rm /usr/local/bin/usbmount.sh &>/dev/null
-rm /usr/local/bin/hack.sh &>/dev/null
+rm -r /opt/PiBAN &>/dev/null
 rm /etc/udev/rules.d/usbmount.rules &>/dev/null
+rm /etc/systemd/system/piban@.service &>/dev/null
 rm /boot/PiBAN/PiBAN.conf
 
-cp nuke.sh /usr/local/bin/nuke.sh
-cp hack.sh /usr/local/bin/hack.sh
-cp secure_erase.sh /usr/local/bin/secure_erase.sh
-cp usbmount.sh /usr/local/bin/usbmount.sh
+mkdir /opt/PiBAN &>/dev/null
+mkdir /boot/PiBAN &>/dev/null
+
+cp piban@.service /etc/systemd/system/
+cp nuke.sh /opt/PiBAN/nuke.sh
+cp piban.sh /opt/PiBAN/piban.sh
+cp secure_erase.sh /opt/PiBAN/secure_erase.sh
+
 cp usbmount.rules /etc/udev/rules.d/usbmount.rules
 cp PiBAN.conf /boot/PiBAN
 
-udevadm control --reload-rules
+chmod +x /opt/PiBAN/nuke.sh /opt/PiBAN/piban.sh /opt/PiBAN/secure_erase.sh
 
-chmod +x /usr/local/bin/nuke.sh /usr/local/bin/usbmount.sh /usr/local/bin/secure_erase.sh /usr/local/bin/hack.sh
+udevadm control --reload-rules
