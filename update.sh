@@ -4,7 +4,7 @@ rm /etc/systemd/system/piban@.service &>/dev/null
 rm /boot/PiBAN/PiBAN.conf
 
 mkdir /opt/PiBAN &>/dev/null
-mkdir /boot/PiBAN
+mkdir /boot/PiBAN &>/dev/null
 
 cp piban@.service /etc/systemd/system/
 cp nuke.sh /opt/PiBAN/nuke.sh

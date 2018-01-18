@@ -2,7 +2,6 @@
 # Usage: nuke.sh [device]
 # where [device] is the full path to the device to erase. Ex. /dev/sda
 
-export foo="BAR"
 export devname=$(basename $1)
 export logprefix="[$devname]: "
 #Load our settings file
